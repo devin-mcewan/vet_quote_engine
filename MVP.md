@@ -8,9 +8,10 @@ This README will guide you through the setup process.
 ## Front End
 
 <!-- The user should be routed to this app via an external link on 'veterandetail.com" - (For real world useability) -->
-The user should land on the landing page
-The user should be prompted to "Get quote now" on the landing page
-The user should be routed to a Quote Generator Page, showing the first page of a form.
+[X] The user should land on the landing page
+[X] The user should be prompted to "Get quote now" on the landing page
+[X] The user should be able to click on "Get Quote Now" and be routed.
+[X] The user should be routed to a Quote Generator Page, showing the first page of a form.
 The user should be able to insert their first name, last name, phone number, and email. 
 The user should be able to insert their vehicle Year, Make, and Model.
 The user should be able to select desired services from a list of services provided by the database
