@@ -7,7 +7,7 @@ import AppContext from "./context/AppContext";
 import Router from "./Router";
 
 function App() {
-  const { user } = useContext(AppContext);
+  // const { user } = useContext(AppContext);
 
   return (
     <div className="App">

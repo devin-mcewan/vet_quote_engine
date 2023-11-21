@@ -4,16 +4,14 @@ import axios from "axios";
 const AppContext = createContext();
 
 export const AppProvider = ({ children }) => {
-  // const [user, setUser] = useState(null);
-  // const [workouts, setWorkouts] = useState([]);
-  // const [exercises, setExercises] = useState([]);
+  const [user, setUser] = useState(null);
 
-  // useEffect(() => {
-  //   const cachedUser = localStorage.getItem("user");
-  //   if (cachedUser) {
-  //     setUser(JSON.parse(cachedUser));
-  //   }
-  // }, []);
+  useEffect(() => {
+    const cachedUser = localStorage.getItem("user");
+    if (cachedUser) {
+      setUser(JSON.parse(cachedUser));
+    }
+  }, []);
 
   // useEffect(() => {
   //   const getWorkouts = async () => {
@@ -54,20 +52,15 @@ export const AppProvider = ({ children }) => {
   //   localStorage.removeItem("user");
   // };
 
-  // return (
-  //   <AppContext.Provider
-  //     value={{
-  //       user,
-  //       login,
-  //       logout,
-  //       workouts,
-  //       exercises,
-  //       setWorkouts,
-  //     }}
-  //   >
-  //     {children}
-  //   </AppContext.Provider>
-  // );
+  return (
+    <AppContext.Provider
+      value={{
+        user
+      }}
+    >
+      {children}
+    </AppContext.Provider>
+  );
 };
 
 export default AppContext;

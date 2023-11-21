@@ -1,23 +1,19 @@
 const express = require("express");
-
 const router = express.Router();
 
 router.post("/", async (req, res, next) => {
   try {
     const db = req.app.get("db");
 
-    const { email, password } = req.body;
+    const { username, password } = req.body;
 
-    if (!email) {
-      next(new Error("you should provide an email"));
+    if (!username) {
+      next(new Error("you should provide a username"));
     }
     if (!password) {
       next(new Error("you should provide a password"));
     }
-
-    const [user] = await db.get_user_by_credentials({ email, password });
-
-    res.json(user);
+    res.sendStatus(200);
   } catch (err) {
     next(err);
   }
