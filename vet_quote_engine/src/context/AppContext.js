@@ -5,6 +5,11 @@ const AppContext = createContext();
 
 export const AppProvider = ({ children }) => {
   const [user, setUser] = useState(null);
+  const [services, setServices] = useState([]);
+  const [selectedServices, setSelectedServices] = useState([]); //What data type should i store the Id as?
+  const [newQuote, setNewQuote] = useState({
+
+  })
 
   useEffect(() => {
     const cachedUser = localStorage.getItem("user");
@@ -13,49 +18,23 @@ export const AppProvider = ({ children }) => {
     }
   }, []);
 
-  // useEffect(() => {
-  //   const getWorkouts = async () => {
-  //     const response = await axios.get(
-  //       `http://localhost:4001/v1/users/${user.id}/workouts`
-  //     );
-  //     setWorkouts(response.data);
-  //   };
-
-  //   const getExercises = async () => {
-  //     const response = await axios.get(
-  //       `http://localhost:4001/v1/exercises`
-  //     );
-  //     setExercises(response.data);
-  //   };
-
-  //   if (user?.id) {
-  //     getWorkouts();
-  //     getExercises();
-  //   }
-  // }, [user]);
-
-  // const login = async (email, password) => {
-  //   const response = await axios.post("http://localhost:4001/v1/login", {
-  //     email,
-  //     password,
-  //   });
-  //   if (response.data) {
-  //     setUser(response.data);
-  //     localStorage.setItem("user", JSON.stringify(response.data));
-  //   } else {
-  //     console.error("Login failed.");
-  //   }
-  // };
-
-  // const logout = () => {
-  //   setUser(null);
-  //   localStorage.removeItem("user");
-  // };
+  useEffect(() => {
+    const getServices = async () => {
+      const response = await axios.get(`http://localhost:4001/v1/services`);
+      setServices(response.data);
+    }
+    getServices();
+  }, [])
 
   return (
     <AppContext.Provider
       value={{
-        user
+        user,
+        services,
+        selectedServices,
+        setSelectedServices,
+        newQuote, 
+        setNewQuote,
       }}
     >
       {children}
