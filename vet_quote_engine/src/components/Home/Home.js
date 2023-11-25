@@ -9,8 +9,13 @@ const Home = () => {
     }
   return (
     <div>
+    <div className="header">
+    {/* MAKE A HEADER COMPONENT */}
+    </div>
+    <div>
       <h1>Welcome to VetQuoteEngine!</h1>
       <button onClick={() => handleClick()}>Get a Quote!</button>
+    </div>
     </div>
   );
 };
