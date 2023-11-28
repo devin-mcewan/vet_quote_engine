@@ -3,19 +3,24 @@ import AppContext from "../../../context/AppContext";
 import "./ServiceSelector.css";
 
 const ServiceSelector = () => {
-  const { services, selectedServices, setSelectedServices } = useContext(AppContext);
-  //**********Debugging button - Shows current state of selectedServices
+  const { services, selectedServices, setSelectedServices, runningTotal, setRunningTotal } =
+    useContext(AppContext);
+
+  //**********Debugging buttons - Shows current state of selectedServices
   const showSelected = () => {
     console.log("Selected Services: ", selectedServices);
   };
-    // Adding to selectedServices State
+  // Adding to selectedServices State
 
-  const handleSelect = (id) => {
-    if (selectedServices.findIndex((element) => element === id) === -1) {
-      setSelectedServices([...selectedServices, id]);
-    } else {
-      console.log("This service has already been added");
-    }
+  const handleSelect = (service) => {
+    setSelectedServices([...selectedServices, service.id]);
+    setRunningTotal([...runningTotal, service.price]);
+    // old and unneeded code? \/
+    // if (selectedServices.findIndex((element) => element === id) === -1) {
+    //   setSelectedServices([...selectedServices, id]);
+    // } else {
+    //   console.log("This service has already been added");
+    // }
   };
   // Removing from selectedServices State
   const handleDeselect = (id) => {
@@ -28,6 +33,7 @@ const ServiceSelector = () => {
   return (
     <div>
       <h2>Available Services</h2>
+      <h3>Total: {`$${runningTotal}`}</h3>
       <button onClick={() => showSelected()}>Show Selected</button>
       <div className="service-container">
         {services.map((service) => {
@@ -35,13 +41,13 @@ const ServiceSelector = () => {
           const results = selectedServices.findIndex(
             (element) => element === service.id
           );
+            //   Finds if the service is already in the selected services list.
           if (
             selectedServices.findIndex((element) => element === service.id) >= 0
           ) {
             isSelected = true;
           }
-          //   if service in selectedServices, true
-          //   else stay false
+        //      Conditional rendering if a service is selected vs not selected.
           if (isSelected) {
             return (
               <div className="service">
@@ -64,7 +70,7 @@ const ServiceSelector = () => {
                 <p>{service.price}</p>
                 <button
                   className="select-button"
-                  onClick={() => handleSelect(service.id)}
+                  onClick={() => handleSelect(service)}
                 >
                   Select This Service
                 </button>

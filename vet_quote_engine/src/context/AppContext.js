@@ -8,8 +8,18 @@ export const AppProvider = ({ children }) => {
   const [services, setServices] = useState([]);
   const [selectedServices, setSelectedServices] = useState([]); //What data type should i store the Id as?
   const [newQuote, setNewQuote] = useState({
-
+    firstName: '',
+    lastName: '',
+    mobileNumber: '',
+    email: '',
+    year: '',
+    make: '',
+    model: ''
   })
+  const [runningTotal, setRunningTotal] = useState([])
+
+  useEffect(() => {
+  }, runningTotal)
 
   useEffect(() => {
     const cachedUser = localStorage.getItem("user");
@@ -35,6 +45,8 @@ export const AppProvider = ({ children }) => {
         setSelectedServices,
         newQuote, 
         setNewQuote,
+        runningTotal, 
+        setRunningTotal
       }}
     >
       {children}

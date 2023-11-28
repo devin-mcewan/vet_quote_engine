@@ -1,16 +1,19 @@
 import e from "cors";
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import QuoteGeneratorForm from "./QuoteGeneratorForm/QuoteGeneratorForm";
 import CancelButton from "../CancelButton";
 import ServiceSelector from "./ServiceSelector";
-import Album from "../Album";
 import AppContext from "../../context/AppContext";
+import axios from "axios";
 
 const QuoteGenerator = () => {
-  // const [selectedServices, quote] = useContext(AppContext)
-  // const sendQuote = () => {
-  //   console.log('boop')
-  // }
+  // const [selectedServices, newQuote] = useContext(AppContext);
+  // const sendQuote = async () => {
+  //   const quote = await axios.post(`http://localhost:4001/v1/quotes`, {
+  //     newQuote,
+  //     selectedServices,
+  //   });
+  // };
   return (
     <div>
       <div className="quote-generator-header">
@@ -20,7 +23,7 @@ const QuoteGenerator = () => {
       <QuoteGeneratorForm />
       <h1>Service Selector</h1>
       <ServiceSelector />
-      {/* <button onClick={()=>sendQuote()}>GET A QUOTE!</button> */}
+      {/* <button onClick={() => sendQuote()}>GET A QUOTE!</button> */}
       <CancelButton />
     </div>
   );
