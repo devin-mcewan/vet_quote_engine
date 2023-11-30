@@ -7,18 +7,13 @@ export const AppProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [services, setServices] = useState([]);
   const [selectedServices, setSelectedServices] = useState([]); //What data type should i store the Id as?
-  const [newQuote, setNewQuote] = useState({
-    firstName: '',
-    lastName: '',
-    mobileNumber: '',
-    email: '',
-    year: '',
-    make: '',
-    model: ''
-  })
+  const [newQuote, setNewQuote] = useState({});
+
   const [runningTotal, setRunningTotal] = useState([])
 
   useEffect(() => {
+  //   let newRunningTotal = runningTotal.reduce();
+  //  setRunningTotal()
   }, runningTotal)
 
   useEffect(() => {
@@ -36,6 +31,13 @@ export const AppProvider = ({ children }) => {
     getServices();
   }, [])
 
+  const cancelClear = () => {
+    console.log("Initializing State Clearing")
+    setSelectedServices([]);
+    setNewQuote({});
+    console.log("State has been cleared")
+  }
+
   return (
     <AppContext.Provider
       value={{
@@ -46,7 +48,8 @@ export const AppProvider = ({ children }) => {
         newQuote, 
         setNewQuote,
         runningTotal, 
-        setRunningTotal
+        setRunningTotal, 
+        cancelClear,
       }}
     >
       {children}

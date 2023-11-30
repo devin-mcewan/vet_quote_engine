@@ -11,7 +11,9 @@ const QuoteGeneratorForm = () => {
         <input
           type="text"
           placeholder="John"
-          onChange={(e) => setNewQuote({ ...newQuote, firstName: e.target.value })}
+          onChange={(e) =>
+            setNewQuote({ ...newQuote, first_name: e.target.value })
+          }
         />
         {/* REMOVE THESE BREAKS IN CSS STYLING */}
         <br />
@@ -19,7 +21,9 @@ const QuoteGeneratorForm = () => {
         <input
           type="text"
           placeholder="Doe"
-          onChange={(e) => setNewQuote({ ...newQuote, lastName: e.target.value })}
+          onChange={(e) =>
+            setNewQuote({ ...newQuote, last_name: e.target.value })
+          }
         />
         {/* REMOVE THESE BREAKS IN CSS STYLING */}
         <br />
@@ -27,7 +31,9 @@ const QuoteGeneratorForm = () => {
         <input
           type="text"
           placeholder="(555) 555-5555"
-          onChange={(e) => setNewQuote({ ...newQuote, mobileNumber: e.target.value })}
+          onChange={(e) =>
+            setNewQuote({ ...newQuote, phone_number: e.target.value })
+          }
         />
         {/* REMOVE THESE BREAKS IN CSS STYLING */}
         <br />

@@ -7,13 +7,14 @@ import AppContext from "../../context/AppContext";
 import axios from "axios";
 
 const QuoteGenerator = () => {
-  // const [selectedServices, newQuote] = useContext(AppContext);
-  // const sendQuote = async () => {
-  //   const quote = await axios.post(`http://localhost:4001/v1/quotes`, {
-  //     newQuote,
-  //     selectedServices,
-  //   });
-  // };
+  const {selectedServices, newQuote} = useContext(AppContext);
+  const sendQuote = async () => {
+    console.log(selectedServices);
+    const quote = await axios.post(`http://localhost:4001/v1/quotes`, {
+      newQuote,
+      selectedServices,
+    });
+  };
   return (
     <div>
       <div className="quote-generator-header">
@@ -23,7 +24,7 @@ const QuoteGenerator = () => {
       <QuoteGeneratorForm />
       <h1>Service Selector</h1>
       <ServiceSelector />
-      {/* <button onClick={() => sendQuote()}>GET A QUOTE!</button> */}
+      <button onClick={() => sendQuote()}>GET A QUOTE!</button>
       <CancelButton />
     </div>
   );

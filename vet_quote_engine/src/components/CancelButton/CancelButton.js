@@ -1,9 +1,10 @@
 import { useNavigate } from "react-router-dom";
-import { useState } from "react";
-import { useEffect } from "react";
+import AppContext from "../../context/AppContext";
 import CancelModal from "./CancelModal";
+import { useContext } from "react";
 
 const CancelButton = () => {
+  const {cancelClear} = useContext(AppContext);
   const navigate = useNavigate();
 //   let status = false;
 //   this handle click is for conditional rendering
@@ -19,6 +20,7 @@ const CancelButton = () => {
 //   };
 
 const handleClick = () => {
+    cancelClear();
     navigate('/');
 }
   return (
@@ -29,21 +31,5 @@ const handleClick = () => {
     </div>
   );
 
-  //   useEffect(() => {
-  //     if (!status) {
-  //         return (
-  //           <button className="cancel-button" onClick={() => handleClick()}>
-  //             CANCEL
-  //           </button>
-  //         );
-  //       } else
-  //         return (
-  //           <div>
-  //             <h1>Are you sure?</h1>
-  //             <button onClick={() => handleYes()}>Yes</button>
-  //             <button onClick={() => handleNo()}>No</button>
-  //           </div>
-  //         );
-  //   })
-};
+  }
 export default CancelButton;

@@ -1,20 +1,22 @@
 import { useNavigate } from "react-router-dom";
+import ResponsiveAppBar from "../AppBar";
 
 const Home = () => {
     const navigate = useNavigate();
 
-    const handleClick = () => {
-        console.log('I have been clicked');
+    const handleGetQuote = () => {
         navigate('/quote_generator');
+    }
+    const handleLogin = () => {
+      navigate('/login');
     }
   return (
     <div>
-    <div className="header">
-    {/* MAKE A HEADER COMPONENT */}
-    </div>
+      {/* <ResponsiveAppBar /> */}
     <div>
       <h1>Welcome to VetQuoteEngine!</h1>
-      <button onClick={() => handleClick()}>Get a Quote!</button>
+      <button onClick={() => handleLogin()}>Login</button>
+      <button onClick={() => handleGetQuote()}>Get a Quote!</button>
     </div>
     </div>
   );

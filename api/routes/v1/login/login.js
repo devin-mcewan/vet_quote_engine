@@ -13,7 +13,8 @@ router.post("/", async (req, res, next) => {
     if (!password) {
       next(new Error("you should provide a password"));
     }
-    res.sendStatus(200);
+    const [user] = await db.get_user_by_credentials({ username, password });
+    res.json(user);
   } catch (err) {
     next(err);
   }
