@@ -1,5 +1,6 @@
 import e from "cors";
 import { useContext } from "react";
+import { useNavigate } from "react-router-dom";
 import QuoteGeneratorForm from "./QuoteGeneratorForm/QuoteGeneratorForm";
 import CancelButton from "../CancelButton";
 import ServiceSelector from "./ServiceSelector";
@@ -7,13 +8,18 @@ import AppContext from "../../context/AppContext";
 import axios from "axios";
 
 const QuoteGenerator = () => {
-  const {selectedServices, newQuote} = useContext(AppContext);
+  const {selectedServices, newQuote, setNewQuote} = useContext(AppContext);
+  const navigate = useNavigate();
+  const handleClick = () => {
+    sendQuote();
+  }
   const sendQuote = async () => {
-    console.log(selectedServices);
     const quote = await axios.post(`http://localhost:4001/v1/quotes`, {
       newQuote,
       selectedServices,
     });
+    // I tried to destructure ID from quote.data - const {id} = quote.data;
+    navigate(`/quotes/${quote.data.id}`);
   };
   return (
     <div>
@@ -24,7 +30,7 @@ const QuoteGenerator = () => {
       <QuoteGeneratorForm />
       <h1>Service Selector</h1>
       <ServiceSelector />
-      <button onClick={() => sendQuote()}>GET A QUOTE!</button>
+      <button onClick={() => handleClick()}>SEND QUOTE</button>
       <CancelButton />
     </div>
   );

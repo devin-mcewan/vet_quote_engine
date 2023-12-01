@@ -1,5 +1,5 @@
 .service-container {
-    justify-content: space-around;
+    justify-content: space-evenly;
     align-content: center;
     align-items: center;
     width: 100%;
@@ -22,6 +22,7 @@
     padding-right: 10px;
     transition: 0.5s ease-in-out;
     border: 2px solid black;
+    margin: 30px;
 }
 .service:hover {
     transform: scale(1.05);

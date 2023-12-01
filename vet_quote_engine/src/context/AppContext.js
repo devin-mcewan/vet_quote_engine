@@ -30,6 +30,9 @@ export const AppProvider = ({ children }) => {
     }
     getServices();
   }, [])
+  useEffect(() => {
+    setNewQuote({...newQuote, status: "New"});
+  }, [newQuote])
 
   const cancelClear = () => {
     console.log("Initializing State Clearing")
