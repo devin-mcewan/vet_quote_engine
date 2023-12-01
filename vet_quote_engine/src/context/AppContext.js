@@ -11,10 +11,10 @@ export const AppProvider = ({ children }) => {
 
   const [runningTotal, setRunningTotal] = useState([])
 
-  useEffect(() => {
-  //   let newRunningTotal = runningTotal.reduce();
-  //  setRunningTotal()
-  }, runningTotal)
+  // useEffect(() => {
+  // //   let newRunningTotal = runningTotal.reduce();
+  // //  setRunningTotal()
+  // }, runningTotal)
 
   useEffect(() => {
     const cachedUser = localStorage.getItem("user");

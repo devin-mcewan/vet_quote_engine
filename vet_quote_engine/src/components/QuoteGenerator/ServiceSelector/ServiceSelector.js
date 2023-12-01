@@ -4,8 +4,15 @@ import "./ServiceSelector.css";
 import { Box, Paper } from "@mui/material";
 
 const ServiceSelector = () => {
-  const { services, selectedServices, setSelectedServices, runningTotal, setRunningTotal } =
-    useContext(AppContext);
+  const {
+    services,
+    selectedServices,
+    setSelectedServices,
+    runningTotal,
+    setRunningTotal,
+  } = useContext(AppContext);
+
+  const selectedClass = "selected_service";
 
   // Adding to selectedServices State
   const handleSelect = (service) => {
@@ -28,7 +35,6 @@ const ServiceSelector = () => {
     setSelectedServices([...selectedServices]);
   };
 
-
   return (
     <div>
       <h2>Available Services</h2>
@@ -43,11 +49,11 @@ const ServiceSelector = () => {
           ) {
             isSelected = true;
           }
-          
-        //      Conditional rendering if a service is selected vs not selected.
+
+          //      Conditional rendering if a service is selected vs not selected.
           if (isSelected) {
             return (
-              <Paper>
+              <div className={selectedClass}>
                 <h3>{service.name}</h3>
                 <p>{service.description}</p>
                 <p>{service.price}</p>
@@ -55,12 +61,9 @@ const ServiceSelector = () => {
                   className="deselect-button"
                   onClick={() => handleDeselect(service.id)}
                 >
-                  Deselect
+                  REMOVE
                 </button>
-              </Paper>
-              // <div className="service">
-                
-              // </div>
+              </div>
             );
           } else {
             return (
@@ -72,7 +75,7 @@ const ServiceSelector = () => {
                   className="select-button"
                   onClick={() => handleSelect(service)}
                 >
-                  Select This Service
+                  SELECT
                 </button>
               </div>
             );
