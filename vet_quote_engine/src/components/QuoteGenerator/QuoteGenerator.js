@@ -1,4 +1,3 @@
-import e from "cors";
 import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import QuoteGeneratorForm from "./QuoteGeneratorForm/QuoteGeneratorForm";
@@ -8,7 +7,7 @@ import AppContext from "../../context/AppContext";
 import axios from "axios";
 
 const QuoteGenerator = () => {
-  const {selectedServices, newQuote, setNewQuote} = useContext(AppContext);
+  const {selectedServices, newQuote} = useContext(AppContext);
   const navigate = useNavigate();
   const handleClick = () => {
     sendQuote();

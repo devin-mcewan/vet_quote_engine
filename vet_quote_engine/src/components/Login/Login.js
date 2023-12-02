@@ -1,8 +1,10 @@
 import axios from "axios";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import AppContext from "../../context/AppContext";
 
 const Login = () => {
+  const { setUser } = useContext(AppContext);
   const [username, setUsername] = useState();
   const [password, setPassword] = useState();
   const navigate = useNavigate();
@@ -13,12 +15,13 @@ const Login = () => {
       password,
     });
 
-    console.log(response);
-    
-    if (response.status === 200) {
-      navigate('/admin');
+    const user = response.data;
+
+    if (user) {
+      delete user.password;
+      setUser(user)
+      navigate("/admin");
     }
-    
   };
 
   return (
