@@ -8,7 +8,7 @@
     flex-wrap: wrap;
 }
 /* Unselected Services */
-.service {
+/* .service {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -31,9 +31,9 @@
     border: 3px solid black;
     background-color: rgba(199, 199, 199, 0.507);
 
-}
+} */
 /* Selected Services */
-.selected_service {
+/* .selected_service {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -56,7 +56,7 @@
     border: 3px solid black;
     filter: drop-shadow(2px 2px 0.2rem black);
     background-color: rgba(80, 187, 110, 0.959);
-}
+} */
 /* Button Hover on Services */
 /* .service button {
     font-weight: bold;
@@ -67,7 +67,7 @@
     padding: 10px;
     margin-top: 15px;
 } */
-.selected_service button {
+/* .selected_service button {
     font-weight: bold;
     width: 50%;
     border-radius: 10px;
@@ -81,5 +81,5 @@
 }
 .deselect-button{
     background-color: rgb(224, 83, 83);
-}
+} */
 

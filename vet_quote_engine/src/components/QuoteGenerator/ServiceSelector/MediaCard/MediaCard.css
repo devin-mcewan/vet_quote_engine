@@ -1,0 +1,20 @@
+.selected_service {
+    background-color: rgba(111, 194, 135, 0.959);
+    color: white;
+    transition: height 0.5s;
+    transition: 0.5s ease-in-out;
+}
+.selected_service:hover {
+    background-color: rgba(132, 228, 159, 0.959);
+    transition: 0.5s ease-in-out;
+    transform: scale(1.05);
+}
+
+.service {
+    transition: 0.5s ease-in-out;
+}
+.service:hover {
+    background-color: rgb(230, 230, 230);
+    transition: 0.5s ease-in-out;
+    transform: scale(1.05);
+}
