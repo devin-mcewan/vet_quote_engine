@@ -29,7 +29,6 @@ export default function MediaCard() {
     <Box className="service-container">
       {/* Finds out if service is in selected services */}
       {services.map((service) => {
-        console.log(service.image);
         let isSelected = false;
         if (
           selectedServices.findIndex((element) => element === service.id) >= 0

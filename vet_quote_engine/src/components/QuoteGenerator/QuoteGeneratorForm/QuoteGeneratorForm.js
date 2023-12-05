@@ -5,6 +5,7 @@ import "./QuoteGeneratorForm.css";
 
 const QuoteGeneratorForm = () => {
   const { newQuote, setNewQuote } = useContext(AppContext);
+
   return (
     <Box className="quote-generator-form">
       <Paper>
@@ -50,7 +51,7 @@ const QuoteGeneratorForm = () => {
             label="Year"
             variant="outlined"
             onChange={(e) =>
-              setNewQuote({ ...newQuote, first_name: e.target.value })
+              setNewQuote({ ...newQuote, year: e.target.value })
             }
           />
           <TextField
@@ -58,7 +59,7 @@ const QuoteGeneratorForm = () => {
             label="Make"
             variant="outlined"
             onChange={(e) =>
-              setNewQuote({ ...newQuote, last_name: e.target.value })
+              setNewQuote({ ...newQuote, make: e.target.value })
             }
           />
           <TextField
@@ -66,7 +67,7 @@ const QuoteGeneratorForm = () => {
             label="Model"
             variant="outlined"
             onChange={(e) =>
-              setNewQuote({ ...newQuote, phone_number: e.target.value })
+              setNewQuote({ ...newQuote, model: e.target.value })
             }
           />
           {/* V2 - Added a trim section so we can prep more accurately based on trim level */}
@@ -75,7 +76,7 @@ const QuoteGeneratorForm = () => {
             label="Trim"
             variant="outlined"
             onChange={(e) =>
-              setNewQuote({ ...newQuote, email: e.target.value })
+              setNewQuote({ ...newQuote, trim: e.target.value })
             }
           /> */}
         </Box>
