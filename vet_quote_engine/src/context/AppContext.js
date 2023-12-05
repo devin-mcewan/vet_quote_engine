@@ -12,7 +12,6 @@ export const AppProvider = ({ children }) => {
   const [needServices, setNeedServices] = useState(false);
   const [isAdmin, setIsAdmin] = useState(false);
   const [runningTotal, setRunningTotal] = useState([]);
-  console.log(user);
 
   // useEffect(() => {
   // //   let newRunningTotal = runningTotal.reduce();
@@ -44,12 +43,20 @@ export const AppProvider = ({ children }) => {
     getQuotes();
   }, []);
 
+  useEffect(() => {
+  
+  }, [user.loggedIn]);
+
   const cancelClear = () => {
-    console.log("Initializing State Clearing");
     setSelectedServices([]);
     setNewQuote({});
-    console.log("State has been cleared");
   };
+  const logout = () => {
+    setUser({});
+    setUser({loggedIn: false});
+  };
+
+
 
   return (
     <AppContext.Provider
@@ -66,7 +73,8 @@ export const AppProvider = ({ children }) => {
         cancelClear,
         quotes,
         isAdmin,
-        setIsAdmin
+        setIsAdmin,
+        logout
       }}
     >
       {children}

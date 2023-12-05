@@ -19,8 +19,8 @@ const Login = () => {
 
     if (user) {
       delete user.password;
-      setUser(user)
-      navigate("/admin");
+      setUser({...user, loggedIn: true})
+      navigate("/");
     }
   };
 

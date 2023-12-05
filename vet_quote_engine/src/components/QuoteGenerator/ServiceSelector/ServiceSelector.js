@@ -1,7 +1,8 @@
 import { useContext, useState, useEffect } from "react";
 import AppContext from "../../../context/AppContext";
 import "./ServiceSelector.css";
-import { Box, Paper } from "@mui/material";
+import { Box, Paper, Card } from "@mui/material";
+import MediaCard from "./MediaCard/MediaCard";
 
 const ServiceSelector = () => {
   const {
@@ -36,11 +37,10 @@ const ServiceSelector = () => {
   };
 
   return (
-    <div>
-      <h2>Available Services</h2>
+    <Paper>
       {/* <h3>Total: {`$${runningTotal}`}</h3> */}
       {/* <button onClick={() => showSelected()}>Show Selected</button> */}
-      <div className="service-container">
+      <Box className="service-container">
         {/* Finds out if service is in selected services */}
         {services.map((service) => {
           let isSelected = false;
@@ -53,7 +53,7 @@ const ServiceSelector = () => {
           //      Conditional rendering if a service is selected vs not selected.
           if (isSelected) {
             return (
-              <div className={selectedClass}>
+              <Card className={selectedClass}>
                 <h3>{service.name}</h3>
                 <p>{service.description}</p>
                 <p>{service.price}</p>
@@ -63,26 +63,30 @@ const ServiceSelector = () => {
                 >
                   REMOVE
                 </button>
-              </div>
+              </Card>
             );
           } else {
             return (
-              <div className="service">
-                <h3>{service.name}</h3>
-                <p>{service.description}</p>
-                <p>{service.price}</p>
-                <button
-                  className="select-button"
-                  onClick={() => handleSelect(service)}
-                >
-                  SELECT
-                </button>
+              <div>
+                <MediaCard />
+
+                <Card className="service">
+                  <h3>{service.name}</h3>
+                  <p>{service.description}</p>
+                  <p>{service.price}</p>
+                  <button
+                    className="select-button"
+                    onClick={() => handleSelect(service)}
+                  >
+                    SELECT
+                  </button>
+                </Card>
               </div>
             );
           }
         })}
-      </div>
-    </div>
+      </Box>
+    </Paper>
   );
 };
 

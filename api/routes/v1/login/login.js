@@ -14,6 +14,7 @@ router.post("/", async (req, res, next) => {
       next(new Error("you should provide a password"));
     }
     const [user] = await db.get_user_by_credentials({ username, password });
+
     if (user) {
       res.json(user);
     } else (next(new Error("not a user")));

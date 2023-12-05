@@ -1,0 +1,27 @@
+.quote-generator-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    padding: 30px;
+}
+
+.customer-information-section {
+    display: flex;
+    flex-direction: row;
+    width: auto;
+    justify-content: space-evenly;
+    padding: 15px;
+}
+.vehicle-information-section {
+    display: flex;
+    flex-direction: row;
+    width: auto;
+    justify-content: space-evenly;
+    padding: 15px;
+}
+
+/* #outlined-basic {
+    width: 250px;
+} */
+
