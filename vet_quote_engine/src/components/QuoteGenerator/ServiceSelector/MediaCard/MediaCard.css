@@ -1,7 +1,6 @@
 .selected_service {
     background-color: rgba(111, 194, 135, 0.959);
     color: white;
-    transition: height 0.5s;
     transition: 0.5s ease-in-out;
 }
 .selected_service:hover {

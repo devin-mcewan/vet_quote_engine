@@ -1,20 +1,50 @@
-import Typography from "@mui/material/Typography";
-import Quote from "./Quote/Quote";
+import axios from "axios";
+import { useParams } from "react-router-dom";
 import "./QuoteDisplay.css";
-import Paper from "@mui/material/Paper";
+import { useContext, useState } from "react";
+import AppContext from "../../context/AppContext";
+import { Box, Paper, Button, Typography } from "@mui/material";
+import AdminRender from "./AdminRender";
+import UserRender from "./UserRender/UserRender";
+import "./QuoteDisplay.css";
 
 const QuoteDisplay = () => {
+  const { id } = useParams();
+  const { user, setUser } = useContext(AppContext);
+  const [services, setServices] = useState();
+  let i = 0;
 
-    return(
-        <Paper>
-            <Typography variant="h3">Thank You!</Typography>
-            <p>Here is a copy of your quote.</p>
-            <p>Please allow 1-2 business days for someone to reach out to schedule your appointment!</p>
-            <Quote />
-            <p>Psst... You can call us and book this now! Give us your unique quote ID on the phone and we will book you ASAP!</p>
-            <a href="tel:8018548575" className="phone-anchor">Call us at (801) 854-8575</a>
-        </Paper>
-    );
-}
+  const toggleAdmin = () => {
+    if (user.tier === "admin") {
+      setUser({ ...user, tier: "user" });
+    } else {
+      setUser({ ...user, tier: "admin" });
+    }
+  };
+
+//   const getQuote = async (id) => {
+//     if (i >= 10) {
+//       return;
+//     } else {
+//       const response = await axios.get(`http://localhost:4001/v1/quotes/${id}`);
+//       const quoteServices = response.data.quoteServices;
+//       const updateServiceState = (services) => {
+//         setServices(services);
+//         console.log('inside services')
+//       };
+//       updateServiceState(quoteServices);
+//       console.log("Services:", services);
+//       console.log("i",i);
+//       i++;
+//     }
+//   };
+//   getQuote(id);
+
+  if (user.tier === "admin") {
+    return <AdminRender toggleAdmin={toggleAdmin} />;
+  } else {
+    return <UserRender toggleAdmin={toggleAdmin} />;
+  }
+};
 
 export default QuoteDisplay;

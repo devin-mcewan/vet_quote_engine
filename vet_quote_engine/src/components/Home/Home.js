@@ -17,7 +17,6 @@ const Home = () => {
     logout();
     navigate("/");
   };
-  console.log("loggedIn: ", user.loggedIn);
   if (user.loggedIn) {
     return (
       <Box>

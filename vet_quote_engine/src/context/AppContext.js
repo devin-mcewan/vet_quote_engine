@@ -8,10 +8,10 @@ export const AppProvider = ({ children }) => {
   const [services, setServices] = useState([]);
   const [quotes, setQuotes] = useState([]);
   const [selectedServices, setSelectedServices] = useState([]); //What data type should i store the Id as?
-  const [newQuote, setNewQuote] = useState({ status: "New"});
-  const [needServices, setNeedServices] = useState(false);
+  const [newQuote, setNewQuote] = useState({ status: "New" });
   const [isAdmin, setIsAdmin] = useState(false);
   const [runningTotal, setRunningTotal] = useState([]);
+  const [quoteEditStatus, setQuoteEditStatus] = useState(null);
 
   // useEffect(() => {
   // //   let newRunningTotal = runningTotal.reduce();
@@ -27,11 +27,19 @@ export const AppProvider = ({ children }) => {
 
   // Setting services
   useEffect(() => {
-      const getServices = async () => {
-        const response = await axios.get(`http://localhost:4001/v1/services`);
-        setServices(response.data);
-      };
-      getServices();
+    const getServices = async () => {
+      const response = await axios.get(`http://localhost:4001/v1/services`);
+      setServices(response.data);
+    };
+    getServices();
+  }, [setQuoteEditStatus]);
+
+  useEffect(() => {
+    const getServices = async () => {
+      const response = await axios.get(`http://localhost:4001/v1/services`);
+      setServices(response.data);
+    };
+    getServices();
   }, []);
 
   // Setting Quotes
@@ -43,9 +51,9 @@ export const AppProvider = ({ children }) => {
     getQuotes();
   }, []);
 
-  useEffect(() => {
-  
-  }, [user.loggedIn]);
+  useEffect(() => {}, [user.loggedIn]);
+
+  useEffect(() => {}, [user.tier]);
 
   const cancelClear = () => {
     setSelectedServices([]);
@@ -53,10 +61,8 @@ export const AppProvider = ({ children }) => {
   };
   const logout = () => {
     setUser({});
-    setUser({loggedIn: false});
+    setUser({ loggedIn: false });
   };
-
-
 
   return (
     <AppContext.Provider
@@ -74,7 +80,9 @@ export const AppProvider = ({ children }) => {
         quotes,
         isAdmin,
         setIsAdmin,
-        logout
+        logout,
+        quoteEditStatus,
+        setQuoteEditStatus,
       }}
     >
       {children}

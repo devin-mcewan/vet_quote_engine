@@ -1,0 +1,24 @@
+.service {
+    transition: 0.5s ease-in-out;
+    transform: scale(1.03);
+    background-color: red;
+    padding: 25px;
+    height: 150px;
+    width: 150px;
+}
+.service:hover{
+    transition: 0.5s ease-in-out;
+    transform: scale(1.03);
+}
+.service-container {
+    display: flex;
+    justify-content: space-evenly;
+}
+.quote-service-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 50px;
+}
+
+

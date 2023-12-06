@@ -1,0 +1,11 @@
+.button-box {
+    width: 50%;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+}
+.admin-button {
+    padding: 10px;
+    margin: 10px;
+  }
+
